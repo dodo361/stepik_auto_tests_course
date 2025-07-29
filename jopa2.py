@@ -1,0 +1,28 @@
+import math
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+try:
+    # Открываем страницу с формой
+    browser = webdriver.Chrome()
+    browser.get("http://suninjuly.github.io/find_xpath_form")
+    
+    # Заполняем форму
+    input1 = browser.find_element(By.NAME, "first_name")
+    input1.send_keys("Ivan")
+    input2 = browser.find_element(By.NAME, "last_name")
+    input2.send_keys("Petrov")
+    input3 = browser.find_element(By.CLASS_NAME, "city")
+    input3.send_keys("Smolensk")
+    input4 = browser.find_element(By.ID, "country")
+    input4.send_keys("Russia")
+    
+    # Находим кнопку Submit с помощью XPath
+    button = browser.find_element(By.XPATH, "//button[contains(text(), 'Submit')]")
+    button.click()
+
+finally:
+    # Даем время скопировать код
+    time.sleep(30)
+    browser.quit()
